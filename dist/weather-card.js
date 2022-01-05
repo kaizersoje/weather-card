@@ -199,6 +199,9 @@ class WeatherCard extends LitElement {
                         minute: "2-digit",
                     });
     }
+    
+    next_rising = "";
+    next_setting = "";
 
     this.numberElements++;
 
