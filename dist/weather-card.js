@@ -216,19 +216,28 @@ class WeatherCard extends LitElement {
             ${this.getUnit("length")}/h
           </span>
         </li>
-        <li>
-          <ha-icon icon="mdi:gauge"></ha-icon>
-          ${stateObj.attributes.pressure}
-          <span class="unit">
-            ${this.getUnit("air_pressure")}
-          </span>
-        </li>
-        <li>
-          <ha-icon icon="mdi:weather-fog"></ha-icon> ${stateObj.attributes
-            .visibility}<span class="unit">
-            ${this.getUnit("length")}
-          </span>
-        </li>
+        ${stateObj.attributes.pressure
+          ? html`
+              <li>
+                <ha-icon icon="mdi:gauge"></ha-icon>
+                ${stateObj.attributes.pressure}
+                <span class="unit">
+                  ${this.getUnit("air_pressure")}
+                </span>
+              </li>
+            `
+          : ""}
+        ${stateObj.attributes.visibility
+          ? html`
+              <li>
+                <ha-icon icon="mdi:weather-fog"></ha-icon>
+                ${stateObj.attributes.visibility}
+                <span class="unit">
+                  ${this.getUnit("length")}
+                </span>
+              </li>
+            `
+          : ""}
         ${next_rising
           ? html`
               <li>
